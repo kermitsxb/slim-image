@@ -1,7 +1,7 @@
 version: '2'
 services:
   web:
-    image: local/php:5.6-apache
+    image: local/php:7.1-apache
     volumes: 
       - ./:/var/www/html/
       - ./config/php.ini:/etc/php5/apache2/conf.d/php.ini

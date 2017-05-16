@@ -1,30 +1,14 @@
 version: '2'
 services:
   web:
-    image: local/php:7.1-apache
+    image: php:7.1-apache
+    working_dir: /var/www/html
     volumes: 
       - ./:/var/www/html/
-      - ./config/php.ini:/etc/php5/apache2/conf.d/php.ini
+      - ./config/php.ini:/etc/php7/apache2/conf.d/php.ini
       - ./config/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
     #environment:
     #  - 
     ports:
       - "80:80"
       - "443:443"
-    
-
-  db:
-    image: mariadb:10.1
-    command: mysqld --innodb-buffer-pool-size=20M
-    volumes:
-      - "./.mariadb:/var/lib/mysql:rw"
-    environment:
-      - "MYSQL_DATABASE=ecom"
-      - "MYSQL_USER=ecom"
-      - "MYSQL_PASSWORD=ecom123"
-      - "MYSQL_ROOT_PASSWORD=root"
-    ports:
-      - "3306:3306"
-
-
-
